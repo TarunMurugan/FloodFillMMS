@@ -45,6 +45,17 @@ class HCSR04:
         """
         GPIO.cleanup()
 
+def travel(distance: int):
+    FrontSensor=HCSR04(trigger_pin=17,echo_pin=27) #change pins
+    BackSensor=HCSR04(trigger_pin=16,echo_pin=15)
+    initial_distance=[FrontSensor.get_distance(),BackSensor.get_distance()]
+    while((initial_distance[0]-FrontSensor.get_distance()+BackSensor.get_distance()-initial_distance[1])/2<distance):
+        #forward
+        pass
+
+
+
+
 
 if __name__ == "__main__":
     sensor = HCSR04(trigger_pin=23, echo_pin=24)
